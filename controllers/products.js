@@ -1,4 +1,4 @@
-const Product = require('../models/ProductSchema'); 
+const Product = require('../models/ProductSchema');
 
 const getproducts = async (req, res) => {
   try {
@@ -25,7 +25,27 @@ const getSingleProduct = async (req, res) => {
   }
 };
 
+const addNewProduct = async (req, res) => {
+  const { title, price, image, description } = req.body;
+
+  try {
+    const newProduct = new Product({
+      title,
+      price,
+      image,
+      description
+    });
+
+    const savedProduct = await newProduct.save();
+    return res.status(201).json(savedProduct);
+  } catch (error) {
+    return res.status(500).json({ message: 'Error adding product', error: error.message });
+  }
+};
+
 module.exports = {
   getproducts,
   getSingleProduct,
+  addNewProduct,
 };
+
