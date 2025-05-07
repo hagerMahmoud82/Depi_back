@@ -16,7 +16,6 @@ mongoose.connect(DB)
 
 app.use(express.json());
 app.use(cors());
-console.log("adham");
 app.use("/api/products", products_routes);
 
 app.use((req, res) => {
