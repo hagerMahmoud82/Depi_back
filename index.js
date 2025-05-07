@@ -16,6 +16,7 @@ mongoose.connect(DB)
 
 app.use(express.json());
 app.use(cors());
+console.log("adham");
 app.use("/api/products", products_routes);
 
 app.use((req, res) => {
@@ -27,4 +28,5 @@ app.use((req, res) => {
 
 const PORT = 3000;
 module.exports = app;
+
 app.listen(PORT, () =>{console.log("server connected")});
