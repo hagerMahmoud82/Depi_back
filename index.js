@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require('mongoose');
 require('dotenv').config();
 const { products_routes } = require("./routes/products_routes");
+const { usersRoutes } = require("./routes/userRoutes");
 
 const app = express();
 const DB = process.env.DB;
@@ -18,7 +19,7 @@ app.use(express.json());
 app.use(cors());
 console.log("adham");
 app.use("/api/products", products_routes);
-
+app.use("/api/users", usersRoutes);
 app.use((req, res) => {
   return res.status(500).json({
     status: 500,
